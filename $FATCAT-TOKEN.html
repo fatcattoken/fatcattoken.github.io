@@ -167,7 +167,45 @@ function renderMessage (message) {
               <div class="u-size-30">
                 <div class="u-layout-row">
                   <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
-                    <div class="u-container-layout u-container-layout-2"></div>
+                    <div class="u-container-layout u-container-layout-2">
+                      <div class="u-clearfix u-custom-html u-custom-html-4">
+                        <script type="text/javascript"> window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          initPayButton()
+        } catch (err) {
+          $('#status').html('User denied account access', err)
+        }
+      } else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider)
+        initPayButton()
+      } else {
+        $('#status').html('No Metamask (or other Web3 Provider) installed')
+      }
+    })
+    const initPayButton = () => {
+      $('.pay-button').click(() => {
+        // paymentAddress is where funds will be send to
+        const paymentAddress = '0x192c96bfee59158441f26101b2db1af3b07feb40'
+        const amountEth = 1
+        web3.eth.sendTransaction({
+          to: paymentAddress,
+          value: web3.toWei(amountEth, 'ether')
+        }, (err, transactionId) => {
+          if  (err) {
+            console.log('Payment failed', err)
+            $('#status').html('Payment failed')
+          } else {
+            console.log('Payment successful', transactionId)
+            $('#status').html('Payment successful')
+          }
+        })
+      })
+    } </script>
+                      </div>
+                    </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-3">
                     <div class="u-container-layout u-container-layout-3"></div>
