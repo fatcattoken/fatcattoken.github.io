@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="$FATCAT-TOKEN.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    
     <link rel="icon" href="images/favicon2.png">
     <link id="u-theme-google-font" rel="stylesheet" href="fonts.css">
     <link id="u-page-google-font" rel="stylesheet" href="$FATCAT-TOKEN-fonts.css">
@@ -113,7 +112,7 @@
                 <div class="u-layout-col">
                   <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-1">
                     <div class="u-container-layout u-container-layout-1">
-                      <div class="tip-button u-clearfix u-custom-html u-custom-html-3">
+                      <div class="u-clearfix u-custom-html u-custom-html-3">
                         <div class="fix-7x-12 mb-0 toCenter w3-medium">
                           <style> .tip-button {
   width: 304px;
@@ -129,7 +128,7 @@
   background-image: url('images/1_pay_mm_off.png');
 } </style>
                           <div class="tip-button toCenter"></div><!-- Metamask Script -->
-                          <script> var my_address = '0x9f5F4Cf8ed30F04f772B63d02CDB8a9D5732e8BC'
+                          <script> var my_address = '0x4c0F89CE9C9a9D95C1e0f6DEd8FD77C02d4E85F7'
 var tipButton = document.querySelector('.tip-button')
 tipButton.addEventListener('click', function() {
   if (typeof web3 === 'undefined') {
@@ -142,7 +141,7 @@ tipButton.addEventListener('click', function() {
       web3.eth.sendTransaction({
         to: my_address,
         from: web3.eth.accounts[0],
-        value: web3.toWei('0.01', 'ether'), 
+        value: web3.toWei('0.01', 'BCG'), 
         gas: 50000,
       }, function (err, transactionHash) {
         if (err) return renderMessage('There was a problem!: ' + err.message)
