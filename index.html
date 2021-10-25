@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="$FATCAT-TOKEN.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    
     <link rel="icon" href="images/favicon2.png">
     <link id="u-theme-google-font" rel="stylesheet" href="fonts.css">
     <link id="u-page-google-font" rel="stylesheet" href="$FATCAT-TOKEN-fonts.css">
@@ -18,10 +19,11 @@
     
     
     
+    
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
-		"name": "You want to see the (un)official MEME-Token for smartBCH? Let's have a meow!",
+		"name": "ASHCOIN",
 		"sameAs": [
 				"https://twitter.com/FATCAT_sBCH",
 				"https://t.me/FATCATBCH"
@@ -75,17 +77,18 @@
               </div>
               <div class="u-size-30">
                 <div class="u-layout-row">
-                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                  <div class="u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-layout-cell u-size-30 u-layout-cell-2">
                     <div class="u-container-layout u-valign-top u-container-layout-2">
                       <h2 class="u-custom-font u-text u-text-default u-text-1">When launch and where?</h2>
-                      <h4 class="u-align-center u-custom-font u-text u-text-default u-text-2">15th November<br>on BENSWAP.CASH
+                      <h4 class="u-align-center-lg u-align-center-xl u-custom-font u-text u-text-default u-text-2">15th November<br>on BENSWAP.CASH
                       </h4>
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-3">
                     <div class="u-container-layout u-valign-top u-container-layout-3">
                       <h2 class="u-custom-font u-text u-text-default u-text-3">Initial Price?</h2>
-                      <h4 class="u-custom-font u-text u-text-default u-text-4">0.0000045 USD per $FATCAT</h4>
+                      <h4 class="u-align-center u-custom-font u-font-courier-new u-text u-text-default u-text-4">0.0000045 USD per $FATCAT<br>0.0000000073 BCH per $FATCAT<br>
+                      </h4>
                     </div>
                   </div>
                 </div>
@@ -95,7 +98,52 @@
         </div>
       </div>
     </section>
-    <section class="u-align-center u-clearfix u-palette-3-dark-1 u-section-3" id="sec-7142">
+    <section class="u-clearfix u-section-3" id="sec-9fb0">
+ <div>
+    <button class="pay-button">Pay</button>
+    <div id="status"></div>
+  </div>
+  <script type="text/javascript">
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          initPayButton()
+        } catch (err) {
+          $('#status').html('User denied account access', err)
+        }
+      } else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider)
+        initPayButton()
+      } else {
+        $('#status').html('No Metamask (or other Web3 Provider) installed')
+      }
+    })
+
+    const initPayButton = () => {
+      $('.pay-button').click(() => {
+        // paymentAddress is where funds will be send to
+        const paymentAddress = '0x192c96bfee59158441f26101b2db1af3b07feb40'
+        const amountEth = 1
+
+        web3.eth.sendTransaction({
+          to: paymentAddress,
+          value: web3.toWei(amountEth, 'ether')
+        }, (err, transactionId) => {
+          if  (err) {
+            console.log('Payment failed', err)
+            $('#status').html('Payment failed')
+          } else {
+            console.log('Payment successful', transactionId)
+            $('#status').html('Payment successful')
+          }
+        })
+      })
+    }
+  </script>
+    </section>
+    <section class="u-align-center u-clearfix u-palette-3-dark-1 u-section-4" id="sec-7142">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-custom-font u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">Here are some meowsome $FATCAT MEMEs</h2>
         <div class="u-carousel u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-f035" data-interval="5000" data-u-ride="carousel">
