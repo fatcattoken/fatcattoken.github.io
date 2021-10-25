@@ -110,102 +110,15 @@
             <div class="u-layout-col">
               <div class="u-size-30">
                 <div class="u-layout-col">
-                  <div class="u-container-style u-layout-cell u-size-60 u-layout-cell-1">
-                    <div class="u-container-layout u-container-layout-1">
-                      <div class="u-clearfix u-custom-html u-custom-html-3">
-                        <div class="fix-7x-12 mb-0 toCenter w3-medium">
-                          <style> .tip-button {
-  width: 304px;
-  height: 50px;
-  background-size: 100%;
-  background-image: url('images/1_pay_mm_off.png');
-  cursor: pointer;
-}
-.tip-button:hover {
-  background-image: url('images/1_pay_mm_over.png');
-}
-.tip-button:active {
-  background-image: url('images/1_pay_mm_off.png');
-} </style>
-                          <div class="tip-button toCenter"></div><!-- Metamask Script -->
-                          <script> var my_address = '0x4c0F89CE9C9a9D95C1e0f6DEd8FD77C02d4E85F7'
-var tipButton = document.querySelector('.tip-button')
-tipButton.addEventListener('click', function() {
-  if (typeof web3 === 'undefined') {
-    return renderMessage('<div align="center">You need to install <a class="blue" href="https://metamask.io/"><u>MetaMask</u></a> to use this.</a></div>')
-  }
-  else if (typeof typeof web3 !== 'undefined') {
-    // Request account access if needed
-    ethereum.enable().then(function () {
-      // Acccounts now exposed
-      web3.eth.sendTransaction({
-        to: my_address,
-        from: web3.eth.accounts[0],
-        value: web3.toWei('0.01', 'BCG'), 
-        gas: 50000,
-      }, function (err, transactionHash) {
-        if (err) return renderMessage('There was a problem!: ' + err.message)
-        // If you get a transactionHash, you can assume it was sent,
-        // or if you want to guarantee it was received, you can poll
-        // for that transaction to be mined first.
-        renderMessage('Thanks for the generosity!!')
-      })
-    });
-  }
-})
-function renderMessage (message) {
-  var messageEl = document.querySelector('.message')
-  messageEl.innerHTML = message
-} </script>
-                          <div class="message"></div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="u-align-left u-container-style u-layout-cell u-size-60 u-layout-cell-1">
+                    <div class="u-container-layout u-container-layout-1"></div>
                   </div>
                 </div>
               </div>
               <div class="u-size-30">
                 <div class="u-layout-row">
-                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
-                    <div class="u-container-layout u-container-layout-2">
-                      <div class="u-clearfix u-custom-html u-custom-html-4">
-                        <script type="text/javascript"> window.addEventListener('load', async () => {
-      if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
-        try {
-          await ethereum.enable();
-          initPayButton()
-        } catch (err) {
-          $('#status').html('User denied account access', err)
-        }
-      } else if (window.web3) {
-        window.web3 = new Web3(web3.currentProvider)
-        initPayButton()
-      } else {
-        $('#status').html('No Metamask (or other Web3 Provider) installed')
-      }
-    })
-    const initPayButton = () => {
-      $('.pay-button').click(() => {
-        // paymentAddress is where funds will be send to
-        const paymentAddress = '0x192c96bfee59158441f26101b2db1af3b07feb40'
-        const amountEth = 1
-        web3.eth.sendTransaction({
-          to: paymentAddress,
-          value: web3.toWei(amountEth, 'ether')
-        }, (err, transactionId) => {
-          if  (err) {
-            console.log('Payment failed', err)
-            $('#status').html('Payment failed')
-          } else {
-            console.log('Payment successful', transactionId)
-            $('#status').html('Payment successful')
-          }
-        })
-      })
-    } </script>
-                      </div>
-                    </div>
+                  <div class="u-align-left u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                    <div class="u-container-layout u-container-layout-2"></div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-3">
                     <div class="u-container-layout u-container-layout-3"></div>
