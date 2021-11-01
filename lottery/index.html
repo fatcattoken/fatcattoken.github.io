@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$FATCAT Lottery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.1/web3.min.js"
+          integrity="sha512-96ZCo0pzD4x2MuBZCB4ipirFKs/X/xB2diGU/A7zpfaltISM309KN79pyWe4l9IdtOlzitRltfVcxgdTEbcnvQ=="
+          crossorigin="anonymous"></script>
+
+  <style type="text/css">
+    div.row {
+        margin: 2em;
+        padding: 2em;
+        border: 1px solid #666;
+        border-radius: 0.5em;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .lds-hourglass {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+    .lds-hourglass:after {
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        margin: 8px;
+        box-sizing: border-box;
+        border: 32px solid #000;
+        border-color: #000 transparent #000 transparent;
+        animation: lds-hourglass 1.2s infinite;
+    }
+
+    @keyframes lds-hourglass {
+        0% {
+            transform: rotate(0);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+        50% {
+            transform: rotate(900deg);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        100% {
+            transform: rotate(1800deg);
+        }
+    }
+
+  </style>
+  <script src="js/lottery.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">
+    <img src="https://fatcattoken.github.io/images/photo_2021-10-17_21-39-18.jpg" width="200" />
+  </div>
+  <h1 class="title">$FATCAT Official lottery</h1>
+  <div class="title loading">
+    <div class="lds-hourglass"></div>
+  </div>
+  <div class="row metamask-not-found">
+    <h2 class="title">Metamask not found. Please install it!</h2>
+  </div>
+  <div class="row metamask-wrong-network">
+    <h2 class="title">Please connect to SmartBCH network. Chain ID: 10000</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-12 lottery-closed">
+      <h3 class="title">Lottery is currently closed :<</h3>
+    </div>
+    <div class="col-6 lottery-open">
+      Sold tickets: <span class="sold-tickets"></span><br/>
+      Price per ticket: <span class="ticket-price"></span><br/>
+
+      <h2>3 winners will be picked!</h2>
+    </div>
+    <div class="col-6 lottery-open">
+      # of tickets: <input type="number" class="ticket-amount" value="1" />
+      <button class="btn btn-primary buyticket">Buy tickets!</button>
+
+      <h3>Prize pot</h3>
+      <span>Three tickets will win: <span class="payout"></span></span>
+    </div>
+    <div class="col-12 tickets-bought">
+      <h3>Much ticket bought! GLHF!! :D</h3>
+    </div>
+  </div>
+</div>
+<div class="container last-game">
+  <h1 class="title">Last game</h1>
+  <div class="row">
+    <div class="col-6">
+      Winners:<br/>
+      <span class="winner1"></span><br/>
+      <span class="winner2"></span><br/>
+      <span class="winner3"></span><br/>
+    </div>
+    <div class="col-6">
+      Total tickets sold: <span class="ticketsSold"></span><br/><br/>
+      Winners are now <span class="lastPayout"></span> richer! :]<br/>
+    </div>
+  </div>
+</div>
+<div class="container admin-screen" style="display: none;">
+  <h1 class="title">Admin stuff</h1>
+  <div class="row">
+    <div class="col-12 change-price">
+      <h3>Ticket price</h3>
+      <input type="text" class="ticket-price" /> BCH
+      <button class="btn btn-primary change-ticket-price">Change price</button>
+    </div>
+    <div class="col-12">
+      <br/>
+    </div>
+    <div class="col-12">
+      <h3>Lottery status</h3>
+      Current status: <span class="current-status"></span><br/>
+      <button class="btn btn-primary change-status-open">Open ticket sales!</button>
+      <button class="btn btn-primary change-status-close">Close lottery and pick winner!</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<!-- 0xEb2BB5F1E5f05A6c242Cdd86C402BBA6865ce95c -->
